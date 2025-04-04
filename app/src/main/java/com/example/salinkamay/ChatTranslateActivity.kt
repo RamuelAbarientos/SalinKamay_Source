@@ -45,7 +45,7 @@ class ChatTranslateActivity : AppCompatActivity() {
             .build()
 
         val request = Request.Builder()
-            .url("ws://192.168.254.159:8002/ws")  // Replace with your server IP
+            .url("ws://10.19.49.75:8002/ws")  // Replace with your server IP
             .build()
 
         val listener = object : WebSocketListener() {

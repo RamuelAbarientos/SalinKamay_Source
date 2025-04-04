@@ -5,6 +5,7 @@
     android:orientation="vertical"
     android:gravity="center_horizontal"
     android:padding="24dp"
+    android:fitsSystemWindows="true"
     android:background="@drawable/gradient_background">
 
 

@@ -26,7 +26,7 @@ class ChatActivity : AppCompatActivity(), WebSocketManager.OnMessageListener {
     private lateinit var webSocketManager: WebSocketManager
 
     // Server URL - replace with your actual server IP and port
-    private val serverUrl = "ws://192.168.254.159:8001/ws"
+    private val serverUrl = "ws://10.19.49.75:8001/ws"
 
     // Register for speech recognition result
     private val speechRecognizer = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->

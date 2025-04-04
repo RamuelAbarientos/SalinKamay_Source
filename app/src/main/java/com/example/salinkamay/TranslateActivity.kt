@@ -21,7 +21,7 @@ class TranslateActivity : AppCompatActivity() {
 
     companion object {
         private const val TAG = "TranslateActivity"
-        private const val WEB_SOCKET_URL = "ws://192.168.254.159:8001/ws" // Update with your IP
+        private const val WEB_SOCKET_URL = "ws://10.19.49.75:8001/ws" // Update with your IP
         const val EXTRA_RECEIVED_WORD = "com.example.salinkamay.EXTRA_RECEIVED_WORD"
     }
 
