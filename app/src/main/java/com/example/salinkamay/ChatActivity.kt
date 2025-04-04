@@ -110,7 +110,7 @@ class ChatActivity : AppCompatActivity(), WebSocketManager.OnMessageListener {
     // WebSocket OnMessageListener interface implementations
     override fun onMessageReceived(word: String) {
         // Add the word received from the server to the chat
-        if (word.length > 1 && word != "Not okay" && word != "Okay") {
+        if (word.length > 1 && word != "Not okay" && word != "Okay"  && word != "Letter"  && word != "Number") {
             runOnUiThread {
                 addServerMessage(word)
             }
