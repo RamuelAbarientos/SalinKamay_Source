@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+
+    <solid android:color="@color/nav_bar_color" />
+
+    <!-- Increased corner radius for a more circular shape -->
+    <corners android:topLeftRadius="1000dp" android:topRightRadius="1000dp" />
+
+    <!-- Made the shape larger to allow zoomed-in effect -->
+    <size android:width="1200dp" android:height="600dp"/>
+</shape>

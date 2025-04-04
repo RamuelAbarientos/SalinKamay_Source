@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp"
+    android:background="@drawable/dialog_background"
+    android:gravity="center_horizontal">
+
+    <!-- Title -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Creators of SalinKamay"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="@android:color/black"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:paddingBottom="12dp"/>
+
+    <!-- Scrollable List -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal">
+
+            <!-- Member 1 -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:padding="10dp">
+
+                <ImageView
+                    android:layout_width="90dp"
+                    android:layout_height="90dp"
+                    android:src="@drawable/member1"
+                    android:scaleType="centerCrop"
+                    android:background="@drawable/circle_shape"
+                    android:clipToOutline="true"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="RAMUEL R. ABARIENTOS"
+                    android:textSize="16sp"
+                    android:textColor="@android:color/black"
+                    android:gravity="center"
+                    android:textAlignment="center"
+                    android:fontFamily="@font/creatorfont"
+                    android:layout_marginTop="6dp"/>
+            </LinearLayout>
+
+            <!-- Member 2 -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:padding="10dp">
+
+                <ImageView
+                    android:layout_width="90dp"
+                    android:layout_height="90dp"
+                    android:src="@drawable/member2"
+                    android:scaleType="centerCrop"
+                    android:background="@drawable/circle_shape"
+                    android:clipToOutline="true"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="IYHANA NICOLE A. CAZON"
+                    android:textSize="16sp"
+                    android:textColor="@android:color/black"
+                    android:gravity="center"
+                    android:textAlignment="center"
+                    android:fontFamily="@font/creatorfont"
+                    android:layout_marginTop="6dp"/>
+            </LinearLayout>
+
+            <!-- Member 3 -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:padding="10dp">
+
+                <ImageView
+                    android:layout_width="90dp"
+                    android:layout_height="90dp"
+                    android:src="@drawable/member3"
+                    android:scaleType="centerCrop"
+                    android:background="@drawable/circle_shape"
+                    android:clipToOutline="true"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="JOHN ALFRED J. REYES"
+                    android:textSize="16sp"
+                    android:textColor="@android:color/black"
+                    android:gravity="center"
+                    android:textAlignment="center"
+                    android:fontFamily="@font/creatorfont"
+                    android:layout_marginTop="6dp"/>
+            </LinearLayout>
+
+            <!-- Member 4 -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:padding="10dp">
+
+                <ImageView
+                    android:layout_width="90dp"
+                    android:layout_height="90dp"
+                    android:src="@drawable/member4"
+                    android:scaleType="centerCrop"
+                    android:background="@drawable/circle_shape"
+                    android:clipToOutline="true"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="CRISTINA ANDREA B. VERZOSA"
+                    android:textSize="16sp"
+                    android:textColor="@android:color/black"
+                    android:gravity="center"
+                    android:textAlignment="center"
+                    android:fontFamily="@font/creatorfont"
+                    android:layout_marginTop="6dp"/>
+            </LinearLayout>
+
+            <!-- Member 5 -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:padding="10dp">
+
+                <ImageView
+                    android:layout_width="90dp"
+                    android:layout_height="90dp"
+                    android:src="@drawable/member5"
+                    android:scaleType="centerCrop"
+                    android:background="@drawable/circle_shape"
+                    android:clipToOutline="true"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="HONESTO E. VICENTE III"
+                    android:textSize="16sp"
+                    android:textColor="@android:color/black"
+                    android:gravity="center"
+                    android:textAlignment="center"
+                    android:fontFamily="@font/creatorfont"
+                    android:layout_marginTop="6dp"/>
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

@@ -1,0 +1,109 @@
+package com.example.salinkamay
+
+import android.net.Uri
+import android.os.Bundle
+import android.widget.ImageButton
+import android.widget.Toast
+import android.widget.VideoView
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.widget.NestedScrollView
+
+class ProfileActivity : AppCompatActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_profile)
+
+        // Ensure scroll starts at the top
+        val scrollView = findViewById<NestedScrollView>(R.id.scroll_view)
+        scrollView.post { scrollView.scrollTo(0, 0) }
+
+        setupVideos()
+    }
+
+    private fun setupVideos() {
+        // Unique IDs for each video
+        val videoIds = listOf(
+            R.id.video_view_1,
+            R.id.video_view_2,
+            R.id.video_view_3,
+            R.id.video_view_4,
+            R.id.video_view_5
+        )
+
+        val playIds = listOf(
+            R.id.btn_play_1,
+            R.id.btn_play_2,
+            R.id.btn_play_3,
+            R.id.btn_play_4,
+            R.id.btn_play_5
+        )
+
+        val pauseIds = listOf(
+            R.id.btn_pause_1,
+            R.id.btn_pause_2,
+            R.id.btn_pause_3,
+            R.id.btn_pause_4,
+            R.id.btn_pause_5
+        )
+
+        val rewindIds = listOf(
+            R.id.btn_rewind_1,
+            R.id.btn_rewind_2,
+            R.id.btn_rewind_3,
+            R.id.btn_rewind_4,
+            R.id.btn_rewind_5
+        )
+
+        val forwardIds = listOf(
+            R.id.btn_forward_1,
+            R.id.btn_forward_2,
+            R.id.btn_forward_3,
+            R.id.btn_forward_4,
+            R.id.btn_forward_5
+        )
+
+        val videoFiles = listOf("your_video_1", "your_video_1", "your_video_1", "your_video_1", "your_video_1")
+
+        for (i in videoIds.indices) {
+            val videoView = findViewById<VideoView>(videoIds[i])
+            val playButton = findViewById<ImageButton>(playIds[i])
+            val pauseButton = findViewById<ImageButton>(pauseIds[i])
+            val rewindButton = findViewById<ImageButton>(rewindIds[i])
+            val forwardButton = findViewById<ImageButton>(forwardIds[i])
+
+            try {
+                val videoUri = Uri.parse("android.resource://$packageName/raw/${videoFiles[i]}")
+                videoView.setVideoURI(videoUri)
+
+                playButton.setOnClickListener {
+                    if (!videoView.isPlaying) {
+                        videoView.start()
+                        playButton.animate().alpha(0f).setDuration(300).start() // Hide button
+                    }
+                }
+
+                pauseButton.setOnClickListener {
+                    if (videoView.isPlaying) {
+                        videoView.pause()
+                        playButton.animate().alpha(1f).setDuration(300).start() // Show button
+                    }
+                }
+
+                rewindButton.setOnClickListener {
+                    videoView.seekTo((videoView.currentPosition - 10000).coerceAtLeast(0))
+                }
+
+                forwardButton.setOnClickListener {
+                    videoView.seekTo((videoView.currentPosition + 10000).coerceAtMost(videoView.duration))
+                }
+
+                videoView.setOnCompletionListener {
+                    playButton.animate().alpha(1f).setDuration(300).start()
+                }
+            } catch (e: Exception) {
+                e.printStackTrace()
+                Toast.makeText(this, "Error loading video: ${e.message}", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+}

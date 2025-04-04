@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+
+    <solid android:color="@color/nav_bar_color" />
+
+    <!-- Increase bottom radius to make it look more circular -->
+    <corners android:bottomLeftRadius="600dp" android:bottomRightRadius="600dp" />
+
+    <!-- Adjust height to keep only the bottom curve visible -->
+    <size android:width="1000dp" android:height="500dp"/>
+</shape>

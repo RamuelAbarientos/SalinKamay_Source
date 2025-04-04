@@ -1,0 +1,62 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="10dp">
+
+    <!-- Video Player -->
+    <VideoView
+        android:id="@+id/video_view_4"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:layout_gravity="center"/>
+
+    <!-- Background for Controls -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="250dp"
+        android:background="#80000000"/> <!-- Semi-transparent black -->
+
+    <!-- Control Buttons (Aligned at the Bottom) -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:padding="5dp"
+        android:layout_marginTop="250dp">
+
+        <ImageButton
+            android:id="@+id/btn_rewind_4"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/button_background"
+            android:src="@drawable/ic_rewind"
+            android:contentDescription="Rewind"/>
+
+        <ImageButton
+            android:id="@+id/btn_play_4"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@drawable/button_background"
+            android:src="@drawable/play_button"
+            android:contentDescription="Play Video"/>
+
+        <ImageButton
+            android:id="@+id/btn_pause_4"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/button_background"
+            android:src="@drawable/ic_pause"
+            android:contentDescription="Pause"/>
+
+        <ImageButton
+            android:id="@+id/btn_forward_4"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/button_background"
+            android:src="@drawable/ic_forward"
+            android:contentDescription="Fast Forward"/>
+    </LinearLayout>
+
+</FrameLayout>

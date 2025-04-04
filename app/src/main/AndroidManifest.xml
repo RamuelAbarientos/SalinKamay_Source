@@ -1,0 +1,83 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.salinkamay">
+
+    <!-- Permissions for Camera, Audio Recording, and Storage -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+
+    <application
+        android:allowBackup="true"
+        android:label="SalinKamay"
+        android:icon="@mipmap/ic_launcher"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:usesCleartextTraffic="true"
+        android:theme="@style/Theme.SalinKamay">
+
+        <!-- Splash Screen -->
+        <activity
+            android:name=".SplashActivity"
+            android:theme="@style/Theme.SalinKamay.Splash"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- MainActivity (Home Screen) without Action Bar -->
+        <activity
+            android:name=".MainActivity"
+            android:theme="@style/Theme.SalinKamay.NoActionBar"
+            android:exported="true"/>
+
+        <!-- Profile Activity -->
+        <activity
+            android:name=".ProfileActivity"
+            android:theme="@style/Theme.SalinKamay.NoActionBar"
+            android:exported="true"/>
+
+        <!-- Translate Activity -->
+        <activity
+            android:name=".TranslateActivity"
+            android:theme="@style/Theme.SalinKamay.NoActionBar"
+            android:exported="true"/>
+
+        <!-- Chat Activity -->
+        <activity
+            android:name=".ChatActivity"
+            android:theme="@style/Theme.SalinKamay.NoActionBar"
+            android:exported="true"/>
+
+        <activity
+            android:name=".SettingsActivity"
+            android:theme="@style/Theme.SalinKamay.NoActionBar"
+            android:exported="false" />
+
+        <activity android:name=".ChatTranslateActivity"
+            android:theme="@style/Theme.SalinKamay.NoActionBar"
+            android:exported="false" />
+
+        <activity
+            android:name=".HowToUseActivity"
+            android:theme="@style/Theme.SalinKamay.NoActionBar"
+            android:exported="false" />
+
+        <!-- FileProvider for handling recorded videos securely -->
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:grantUriPermissions="true"
+            android:exported="false">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths"/>
+        </provider>
+
+    </application>
+
+</manifest>

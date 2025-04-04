@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="16dp"
+    android:fitsSystemWindows="true"
+    android:background="@drawable/gradient_background">
+
+    <!-- Title -->
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Live Gesture Translation"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:textColor="#FFFFFF"
+        android:layout_gravity="center_horizontal"
+        android:padding="10dp"
+        android:background="@drawable/oval_background"
+        android:gravity="center"/>
+
+
+
+    <!-- ImageView to Display Image -->
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:adjustViewBounds="true"
+        android:contentDescription="Received Image"
+        android:scaleType="fitCenter"
+        android:src="@drawable/ic_placeholder" />
+
+    <!-- Received Letter Display -->
+    <TextView
+        android:id="@+id/tvStatus"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Waiting for translation..."
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="#4CAF50"
+        android:gravity="center"
+        android:padding="16dp"
+        android:background="@android:color/white"
+        android:layout_marginTop="10dp"/>
+
+</LinearLayout>

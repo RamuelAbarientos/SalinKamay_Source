@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient_background">
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@drawable/salinkamay_logo"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp"/>
+
+
+    <!-- Use background instead of src -->
+
+    <ImageView
+        android:id="@+id/bottom_curve"
+        android:layout_width="599dp"
+        android:layout_height="300dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="-50dp"
+        android:layout_marginEnd="-50dp"
+        android:layout_marginBottom="-72dp"
+        android:background="@drawable/bottom_curve_shape"
+        android:scaleType="fitXY" />
+
+    <TextView
+        android:id="@+id/app_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SALINKAMAY"
+        android:textSize="60sp"
+        android:textColor="@color/bluelight"
+        android:textStyle="bold"
+        android:fontFamily="@font/text_font"
+        android:letterSpacing="0.1"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="50dp"/>
+
+
+</RelativeLayout>

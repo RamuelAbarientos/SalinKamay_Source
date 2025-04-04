@@ -1,0 +1,16 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Default App Theme -->
+    <style name="Theme.SalinKamay" parent="Theme.MaterialComponents.Light">
+        <!-- Customize app theme -->
+    </style>
+
+    <!-- Theme for Splash Screen -->
+    <style name="Theme.SalinKamay.Splash" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="android:windowBackground">@drawable/gradient_background</item>
+    </style>
+
+    <!-- Theme for MainActivity without Action Bar -->
+    <style name="Theme.SalinKamay.NoActionBar" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <!-- Ensures no action bar -->
+    </style>
+</resources>
