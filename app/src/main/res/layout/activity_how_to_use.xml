@@ -24,23 +24,135 @@
             android:textSize="22sp"
             android:textColor="@color/white"
             android:textStyle="bold"
-            android:layout_gravity="center"/>
+            android:layout_gravity="center"
+            android:gravity="center"/>
     </androidx.appcompat.widget.Toolbar>
 
     <!-- Instruction Content -->
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
         android:padding="16dp"
-        app:layout_constraintTop_toBottomOf="@id/how_to_use_toolbar">
+        android:scrollbars="none"
+        app:layout_constraintTop_toBottomOf="@id/how_to_use_toolbar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Instructions on how to use SalinKamay will go here..."
-            android:textSize="16sp"
-            android:textColor="@android:color/black"
-            android:padding="8dp"/>
+            android:orientation="vertical">
+
+            <!-- Instructions Header -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Instructions:"
+                android:textSize="28sp"
+                android:textColor="@android:color/black"
+                android:padding="8dp"
+                android:textStyle="bold"
+                android:background="@drawable/rounded_box"
+                android:gravity="center"/>
+
+                <!-- Text Box -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="For optimal performance, ensure that the camera is positioned directly in front of the person making the hand gestures. Maintain a clear, unobstructed view of their hands, ensuring that they are fully visible within the frame."
+                android:textSize="18sp"
+                android:textColor="@android:color/black"
+                android:padding="25dp"
+                android:background="@drawable/text_box"
+                android:gravity="center"
+                android:layout_marginTop="15dp"
+                android:justificationMode="inter_word"/>
+
+
+            <!-- New Header Below the Instructions -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Switch Mode"
+                android:textSize="28sp"
+                android:textColor="@android:color/black"
+                android:padding="8dp"
+                android:textStyle="bold"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/rounded_box"
+                android:gravity="center"/>
+
+            <!-- Additional Information Content -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="SalinKamay offers two modes for recognizing static hand gestures: Letter Mode and Number Mode. Letter Mode detects and translates static hand gestures into letters, while Number Mode recognizes and converts static hand gestures into numbers."
+                android:textSize="18sp"
+                android:textColor="@android:color/black"
+                android:padding="30dp"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/text_box"
+                android:justificationMode="inter_word"
+                android:gravity="center"/>
+
+
+            <!-- First Image with Description (Letter Mode) -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_marginTop="35dp">
+
+                <ImageView
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:src="@drawable/letter"
+                    android:contentDescription="Letter Mode"
+                    android:layout_gravity="center"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="To switch to Letter Mode, simply perform the designated hand gesture that corresponds to the letter selection command."
+                    android:textSize="16sp"
+                    android:textColor="@android:color/black"
+                    android:padding="18dp"
+                    android:background="@drawable/rounded_box"
+                    android:gravity="center"
+                    android:layout_marginTop="8dp"/>
+            </LinearLayout>
+
+            <!-- Second Image with Description (Number Mode) -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_marginTop="35dp">
+
+                <ImageView
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:src="@drawable/number"
+                    android:contentDescription="Number Mode"
+                    android:layout_gravity="center"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="To switch to Number Mode, simply perform the designated hand gesture associated with the number selection command."
+                    android:textSize="16sp"
+                    android:textColor="@android:color/black"
+                    android:padding="18dp"
+                    android:background="@drawable/rounded_box"
+                    android:gravity="center"
+                    android:layout_marginTop="8dp"/>
+            </LinearLayout>
+
+
+        </LinearLayout>
     </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

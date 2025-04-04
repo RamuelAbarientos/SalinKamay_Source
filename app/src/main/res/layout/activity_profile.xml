@@ -20,6 +20,7 @@
             android:textSize="28sp"
             android:textStyle="bold"
             android:gravity="center"
+            android:background="@drawable/rounded_box"
             android:textColor="@color/black"
             android:paddingBottom="16dp"
             android:fontFamily="@font/headerfont"/>
@@ -30,9 +31,10 @@
             android:layout_height="wrap_content"
             android:adjustViewBounds="true"
             android:scaleType="fitCenter"
+            android:paddingTop="28dp"
             android:src="@drawable/fsl_alphabet"
             android:contentDescription="Filipino Sign Language Alphabet"
-            android:paddingBottom="20dp"/>
+            android:paddingBottom="50dp"/>
 
         <TextView
             android:layout_width="match_parent"
@@ -40,10 +42,11 @@
             android:text="Videos"
             android:textSize="24sp"
             android:textStyle="bold"
+            android:background="@drawable/rounded_box"
             android:gravity="center"
             android:textColor="@color/black"
-            android:paddingTop="20dp"
-            android:paddingBottom="10dp"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"
             android:fontFamily="@font/headerfont"/>
 
         <LinearLayout
