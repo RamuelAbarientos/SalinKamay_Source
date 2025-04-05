@@ -25,7 +25,7 @@ class ChatActivity : AppCompatActivity(), WebSocketManager.OnMessageListener {
     // WebSocket manager for connecting to the server
     private lateinit var webSocketManager: WebSocketManager
 
-    // Server URL - replace with your actual server IP and port
+
     // HOTSPOT PIXEL 6a - "ws://10.19.49.75:8001/ws"
     private val serverUrl = "ws://10.19.49.75:8001/ws"
 
@@ -57,7 +57,10 @@ class ChatActivity : AppCompatActivity(), WebSocketManager.OnMessageListener {
         bottomNavigation.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.nav_home -> {
-                    startActivity(Intent(this, MainActivity::class.java))
+                    val intent = Intent(this, MainActivity::class.java)
+                    intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
+                    startActivity(intent)
+                    finish() // Prevents going back to previous screens
                     true
                 }
                 R.id.nav_chat -> {

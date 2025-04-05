@@ -20,7 +20,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="SalinKamay is a revolutionary app designed to bridge communication gaps using advanced AI-powered sign language translation."
+        android:text="SalinKamay is a student-led project that bridges the gap between Filipino Sign Language (FSL) users and non-users. It translates static hand gestures into text, making communication more inclusive. The device also promotes FSL awareness and encourages more people to understand and support the Deaf community."
         android:textAlignment="center"
         android:textSize="16sp"
         android:textColor="@android:color/black"
