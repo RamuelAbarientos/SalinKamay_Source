@@ -26,6 +26,7 @@ class ChatActivity : AppCompatActivity(), WebSocketManager.OnMessageListener {
     private lateinit var webSocketManager: WebSocketManager
 
     // Server URL - replace with your actual server IP and port
+    // HOTSPOT PIXEL 6a - "ws://10.19.49.75:8001/ws"
     private val serverUrl = "ws://10.19.49.75:8001/ws"
 
     // Register for speech recognition result
@@ -50,6 +51,30 @@ class ChatActivity : AppCompatActivity(), WebSocketManager.OnMessageListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chat)
+
+        val bottomNavigation = findViewById<com.google.android.material.bottomnavigation.BottomNavigationView>(R.id.bottom_navigation)
+        bottomNavigation.selectedItemId = R.id.nav_chat // highlight current tab
+        bottomNavigation.setOnItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.nav_home -> {
+                    startActivity(Intent(this, MainActivity::class.java))
+                    true
+                }
+                R.id.nav_chat -> {
+                    // Already on ChatActivity
+                    true
+                }
+                R.id.nav_camera -> {
+                    startActivity(Intent(this, TranslateActivity::class.java))
+                    true
+                }
+                R.id.nav_profile -> {
+                    startActivity(Intent(this, ProfileActivity::class.java))
+                    true
+                }
+                else -> false
+            }
+        }
 
         // Initialize views
         messageEditText = findViewById(R.id.messageEditText)

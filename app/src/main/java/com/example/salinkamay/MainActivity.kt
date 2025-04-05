@@ -19,7 +19,14 @@ class MainActivity : AppCompatActivity() {
 
         bottomNavigation.setOnItemSelectedListener { item ->
             when (item.itemId) {
-                R.id.nav_home -> true // Stay on MainActivity
+                R.id.nav_home -> {
+                    startActivity(Intent(this, MainActivity::class.java))
+                    true
+                }
+                R.id.nav_chat -> {
+                    startActivity(Intent(this, ChatActivity::class.java))
+                    true
+                }
                 R.id.nav_camera -> {
                     startActivity(Intent(this, TranslateActivity::class.java))
                     true

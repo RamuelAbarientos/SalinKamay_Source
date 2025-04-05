@@ -45,6 +45,7 @@ class ChatTranslateActivity : AppCompatActivity() {
             .build()
 
         val request = Request.Builder()
+            // HOTSPOT PIXEL 6a - "ws://10.19.49.75:8001/ws"
             .url("ws://10.19.49.75:8002/ws")  // Replace with your server IP
             .build()
 

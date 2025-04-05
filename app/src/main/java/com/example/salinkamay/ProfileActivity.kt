@@ -1,5 +1,6 @@
 package com.example.salinkamay
 
+import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.widget.ImageButton
@@ -17,8 +18,34 @@ class ProfileActivity : AppCompatActivity() {
         val scrollView = findViewById<NestedScrollView>(R.id.scroll_view)
         scrollView.post { scrollView.scrollTo(0, 0) }
 
+
+        val bottomNavigation = findViewById<com.google.android.material.bottomnavigation.BottomNavigationView>(R.id.bottom_navigation)
+        bottomNavigation.selectedItemId = R.id.nav_profile // highlight current tab
+        bottomNavigation.setOnItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.nav_home -> {
+                    startActivity(Intent(this, MainActivity::class.java))
+                    true
+                }
+                R.id.nav_chat -> {
+                    startActivity(Intent(this, ChatActivity::class.java))
+                    true
+                }
+                R.id.nav_camera -> {
+                    startActivity(Intent(this, TranslateActivity::class.java))
+                    true
+                }
+                R.id.nav_profile -> {
+                    // Already on Profile, so do nothing
+                    true
+                }
+                else -> false
+            }
+        }
+
         setupVideos()
     }
+
 
     private fun setupVideos() {
         // Unique IDs for each video

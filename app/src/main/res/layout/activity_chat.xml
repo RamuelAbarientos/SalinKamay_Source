@@ -45,7 +45,7 @@
             android:textStyle="bold"
             android:textColor="@android:color/black" />
 
-        <!-- Optional User Profile Picture -->
+        <!-- Camera Icon -->
         <ImageView
             android:id="@+id/userProfilePic"
             android:layout_width="36dp"
@@ -56,17 +56,16 @@
             android:layout_gravity="center_vertical"/>
     </LinearLayout>
 
-    <!-- Chat messages area -->
+    <!-- Chat Messages -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/chatRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:background="@color/nav_bar_color"
         app:layout_constraintTop_toBottomOf="@id/chatHeader"
-        app:layout_constraintBottom_toTopOf="@id/footerLayout"
-        android:overScrollMode="never" />
+        app:layout_constraintBottom_toTopOf="@id/footerLayout" />
 
-    <!-- Footer Layout for message input and send button -->
+    <!-- Footer for Message Input -->
     <LinearLayout
         android:id="@+id/footerLayout"
         android:layout_width="match_parent"
@@ -74,11 +73,11 @@
         android:orientation="horizontal"
         android:padding="8dp"
         android:background="@color/nav_bar_color"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/bottom_navigation"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-        <!-- Voice input button -->
+        <!-- Voice Button -->
         <ImageButton
             android:id="@+id/voiceButton"
             android:layout_width="50dp"
@@ -89,6 +88,7 @@
             android:background="?attr/selectableItemBackgroundBorderless"
             android:layout_marginEnd="8dp"/>
 
+        <!-- Message Input -->
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/messageInputLayout"
             android:layout_width="0dp"
@@ -110,6 +110,7 @@
                 android:inputType="textMultiLine" />
         </com.google.android.material.textfield.TextInputLayout>
 
+        <!-- Send Button -->
         <Button
             android:id="@+id/sendButton"
             android:layout_width="wrap_content"
@@ -118,5 +119,18 @@
             android:layout_marginStart="10dp"
             android:layout_gravity="bottom" />
     </LinearLayout>
+
+    <!-- Bottom Navigation -->
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/nav_bar_color"
+        app:itemIconTint="@color/nav_item_color"
+        app:itemTextColor="@color/nav_item_color"
+        app:menu="@menu/bottom_nav_menu"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

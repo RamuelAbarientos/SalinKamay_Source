@@ -2,17 +2,17 @@ package com.example.salinkamay
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Base64
 import android.util.Log
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import okhttp3.*
 import org.json.JSONObject
+import java.io.ByteArrayInputStream
 import java.util.concurrent.TimeUnit
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
-import android.util.Base64
-import java.io.ByteArrayInputStream
 
 class TranslateActivity : AppCompatActivity() {
     private lateinit var imageView: ImageView
@@ -21,6 +21,7 @@ class TranslateActivity : AppCompatActivity() {
 
     companion object {
         private const val TAG = "TranslateActivity"
+        // HOTSPOT PIXEL 6a - "ws://10.19.49.75:8001/ws"
         private const val WEB_SOCKET_URL = "ws://10.19.49.75:8001/ws" // Update with your IP
         const val EXTRA_RECEIVED_WORD = "com.example.salinkamay.EXTRA_RECEIVED_WORD"
     }
@@ -115,6 +116,31 @@ class TranslateActivity : AppCompatActivity() {
         } catch (e: Exception) {
             Log.e(TAG, "Error setting up WebSocket", e)
             Toast.makeText(this, "Failed to connect: ${e.message}", Toast.LENGTH_LONG).show()
+        }
+
+        // Set up bottom navigation bar
+        val bottomNavigation = findViewById<com.google.android.material.bottomnavigation.BottomNavigationView>(R.id.bottom_navigation)
+        bottomNavigation.selectedItemId = R.id.nav_camera // highlight current tab
+        bottomNavigation.setOnItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.nav_home -> {
+                    startActivity(Intent(this, MainActivity::class.java))
+                    true
+                }
+                R.id.nav_chat -> {
+                    startActivity(Intent(this, ChatActivity::class.java))
+                    true
+                }
+                R.id.nav_camera -> {
+                    startActivity(Intent(this, TranslateActivity::class.java))
+                    true
+                }
+                R.id.nav_profile -> {
+                    startActivity(Intent(this, ProfileActivity::class.java))
+                    true
+                }
+                else -> false
+            }
         }
     }
 

@@ -1,213 +1,217 @@
-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/scroll_view"
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/coordinator_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/gradient_background"
-    android:fitsSystemWindows="true"
-    android:fillViewport="true">
+    android:fitsSystemWindows="true">
 
-    <LinearLayout
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scroll_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:gravity="center"
-        android:padding="16dp">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Learn Filipino Sign Language"
-            android:textSize="28sp"
-            android:textStyle="bold"
-            android:gravity="center"
-            android:background="@drawable/rounded_box"
-            android:textColor="@color/black"
-            android:paddingBottom="16dp"
-            android:fontFamily="@font/headerfont"/>
-
-        <ImageView
-            android:id="@+id/img_fsl_alphabet"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:adjustViewBounds="true"
-            android:scaleType="fitCenter"
-            android:paddingTop="28dp"
-            android:src="@drawable/fsl_alphabet"
-            android:contentDescription="Filipino Sign Language Alphabet"
-            android:paddingBottom="50dp"/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Videos"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            android:background="@drawable/rounded_box"
-            android:gravity="center"
-            android:textColor="@color/black"
-            android:paddingTop="15dp"
-            android:paddingBottom="15dp"
-            android:fontFamily="@font/headerfont"/>
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:layout_marginBottom="56dp"> <!-- Leaves space for bottom nav -->
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:gravity="center">
+            android:gravity="center"
+            android:padding="16dp">
 
-            <!-- Video 1 Overlay -->
-            <FrameLayout
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="64dp"> <!-- Increased margin -->
+                android:text="Learn Filipino Sign Language"
+                android:textSize="28sp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:background="@drawable/rounded_box"
+                android:textColor="@color/black"
+                android:paddingBottom="16dp"
+                android:fontFamily="@font/headerfont"/>
 
-                <include layout="@layout/video_controls_1"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:text="Video 1: Introduction to FSL"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:gravity="center"
-                    android:textColor="@android:color/white"
-                    android:background="@android:color/black"
-                    android:alpha="0.7"
-                    android:padding="8dp"
-                    android:layout_marginTop="10dp"/>
-            </FrameLayout>
-
-            <!-- Video 2 Overlay -->
-            <FrameLayout
+            <ImageView
+                android:id="@+id/img_fsl_alphabet"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="54dp"> <!-- Increased margin -->
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"
+                android:paddingTop="28dp"
+                android:src="@drawable/fsl_alphabet"
+                android:contentDescription="Filipino Sign Language Alphabet"
+                android:paddingBottom="50dp"/>
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Video 2: Basic Hand Gestures"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:gravity="center"
-                    android:textColor="@android:color/white"
-                    android:background="@android:color/black"
-                    android:alpha="0.7"
-                    android:padding="8dp"
-                    android:layout_gravity="top"/>
-
-                <include layout="@layout/video_controls_2" />
-            </FrameLayout>
-
-            <!-- Video 3 Overlay -->
-            <FrameLayout
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="54dp"> <!-- Increased margin -->
+                android:text="Videos"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:background="@drawable/rounded_box"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:paddingTop="15dp"
+                android:paddingBottom="15dp"
+                android:fontFamily="@font/headerfont"/>
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Video 3: Common Phrases"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:gravity="center"
-                    android:textColor="@android:color/white"
-                    android:background="@android:color/black"
-                    android:alpha="0.7"
-                    android:padding="8dp"
-                    android:layout_gravity="top"/>
-
-                <include layout="@layout/video_controls_3" />
-            </FrameLayout>
-
-            <!-- Video 4 Overlay -->
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="54dp"> <!-- Increased margin -->
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Video 4: Numbers and Alphabets"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:gravity="center"
-                    android:textColor="@android:color/white"
-                    android:background="@android:color/black"
-                    android:alpha="0.7"
-                    android:padding="8dp"
-                    android:layout_gravity="top"/>
-
-                <include layout="@layout/video_controls_4" />
-            </FrameLayout>
-
-            <!-- Video 5 Overlay -->
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Video 5: Everyday Conversations"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:gravity="center"
-                    android:textColor="@android:color/white"
-                    android:background="@android:color/black"
-                    android:alpha="0.7"
-                    android:padding="8dp"
-                    android:layout_gravity="top"/>
-
-                <include layout="@layout/video_controls_5" />
-            </FrameLayout>
-
-            <!-- Special Thanks Section -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:gravity="center"
-                android:paddingTop="50dp"
-                android:paddingBottom="20dp">
+                android:gravity="center">
 
-                <TextView
-                    android:layout_width="wrap_content"
+                <!-- Video Frames -->
+                <FrameLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Special Thanks To The"
-                    android:textSize="20sp"
-                    android:gravity="center"
-                    android:textStyle="bold"
-                    android:textColor="@android:color/black"
-                    android:paddingBottom="8dp" />
+                    android:layout_marginBottom="64dp">
+                    <include layout="@layout/video_controls_1"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:text="Video 1: Introduction to FSL"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:gravity="center"
+                        android:textColor="@android:color/white"
+                        android:background="@android:color/black"
+                        android:alpha="0.7"
+                        android:padding="8dp"
+                        android:layout_marginTop="10dp"/>
+                </FrameLayout>
 
-                <TextView
-                    android:layout_width="wrap_content"
+                <FrameLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Special Ministry For the Deaf"
-                    android:textSize="20sp"
-                    android:gravity="center"
-                    android:textStyle="bold"
-                    android:textColor="@android:color/black"
-                    android:paddingBottom="16dp" />
+                    android:layout_marginBottom="54dp">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Video 2: Basic Hand Gestures"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:gravity="center"
+                        android:textColor="@android:color/white"
+                        android:background="@android:color/black"
+                        android:alpha="0.7"
+                        android:padding="8dp"
+                        android:layout_gravity="top"/>
+                    <include layout="@layout/video_controls_2" />
+                </FrameLayout>
 
-                <ImageView
-                    android:layout_width="150dp"
-                    android:layout_height="150dp"
-                    android:src="@drawable/ministry"
-                    android:contentDescription="Special Thanks Image"
-                    android:scaleType="centerCrop"
-                    android:layout_gravity="center"
-                    android:clipToOutline="true"
-                    android:background="@drawable/round_shape" />
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="54dp">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Video 3: Common Phrases"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:gravity="center"
+                        android:textColor="@android:color/white"
+                        android:background="@android:color/black"
+                        android:alpha="0.7"
+                        android:padding="8dp"
+                        android:layout_gravity="top"/>
+                    <include layout="@layout/video_controls_3" />
+                </FrameLayout>
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="54dp">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Video 4: Numbers and Alphabets"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:gravity="center"
+                        android:textColor="@android:color/white"
+                        android:background="@android:color/black"
+                        android:alpha="0.7"
+                        android:padding="8dp"
+                        android:layout_gravity="top"/>
+                    <include layout="@layout/video_controls_4" />
+                </FrameLayout>
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Video 5: Everyday Conversations"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:gravity="center"
+                        android:textColor="@android:color/white"
+                        android:background="@android:color/black"
+                        android:alpha="0.7"
+                        android:padding="8dp"
+                        android:layout_gravity="top"/>
+                    <include layout="@layout/video_controls_5" />
+                </FrameLayout>
+
+                <!-- Special Thanks Section -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:paddingTop="50dp"
+                    android:paddingBottom="20dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Special Thanks To The"
+                        android:textSize="20sp"
+                        android:gravity="center"
+                        android:textStyle="bold"
+                        android:textColor="@android:color/black"
+                        android:paddingBottom="8dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Special Ministry For the Deaf"
+                        android:textSize="20sp"
+                        android:gravity="center"
+                        android:textStyle="bold"
+                        android:textColor="@android:color/black"
+                        android:paddingBottom="16dp" />
+
+                    <ImageView
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        android:src="@drawable/ministry"
+                        android:contentDescription="Special Thanks Image"
+                        android:scaleType="centerCrop"
+                        android:layout_gravity="center"
+                        android:clipToOutline="true"
+                        android:background="@drawable/round_shape" />
+
+                </LinearLayout>
 
             </LinearLayout>
-
         </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
 
-    </LinearLayout>
-</androidx.core.widget.NestedScrollView>
+    <!-- Bottom Navigation Bar outside scroll view -->
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="@color/nav_bar_color"
+        app:itemIconTint="@color/nav_item_color"
+        app:itemTextColor="@color/nav_item_color"
+        app:menu="@menu/bottom_nav_menu"/>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
