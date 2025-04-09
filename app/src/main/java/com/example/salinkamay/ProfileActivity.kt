@@ -92,7 +92,7 @@ class ProfileActivity : AppCompatActivity() {
             R.id.btn_forward_5
         )
 
-        val videoFiles = listOf("your_video_1", "your_video_1", "your_video_1", "your_video_1", "your_video_1")
+        val videoFiles = listOf("vid_1", "vid_2", "vid_3", "vid_4", "vid_5")
 
         for (i in videoIds.indices) {
             val videoView = findViewById<VideoView>(videoIds[i])

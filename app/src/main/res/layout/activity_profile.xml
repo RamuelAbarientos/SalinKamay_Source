@@ -48,7 +48,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Videos"
+                android:text="Basic Sign Language Communication"
                 android:textSize="24sp"
                 android:textStyle="bold"
                 android:background="@drawable/rounded_box"
@@ -73,7 +73,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
-                        android:text="Video 1: Introduction to FSL"
+                        android:text="Video 1: Emergency"
                         android:textSize="18sp"
                         android:textStyle="bold"
                         android:gravity="center"
@@ -91,7 +91,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Video 2: Basic Hand Gestures"
+                        android:text="Video 2: Again"
                         android:textSize="18sp"
                         android:textStyle="bold"
                         android:gravity="center"
@@ -110,7 +110,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Video 3: Common Phrases"
+                        android:text="Video 3: Yes or No"
                         android:textSize="18sp"
                         android:textStyle="bold"
                         android:gravity="center"
@@ -129,7 +129,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Video 4: Numbers and Alphabets"
+                        android:text="Video 4: Please"
                         android:textSize="18sp"
                         android:textStyle="bold"
                         android:gravity="center"
@@ -147,7 +147,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Video 5: Everyday Conversations"
+                        android:text="Video 5: Kindly Finger Spell"
                         android:textSize="18sp"
                         android:textStyle="bold"
                         android:gravity="center"

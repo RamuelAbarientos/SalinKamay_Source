@@ -34,8 +34,7 @@ class SettingsActivity : AppCompatActivity() {
 
         val aboutAppOption = findViewById<LinearLayout>(R.id.about_salinkamay_option)
         val creatorsOption = findViewById<LinearLayout>(R.id.creators_option)
-        val refreshCameraButton = findViewById<Button>(R.id.refresh_camera_button)
-        val shutdownButton = findViewById<Button>(R.id.shutdown_button)
+
 
         aboutAppOption.setOnClickListener {
             showAboutDialog()
@@ -45,13 +44,6 @@ class SettingsActivity : AppCompatActivity() {
             showCreatorsDialog()
         }
 
-        refreshCameraButton.setOnClickListener {
-            refreshCamera()
-        }
-
-        shutdownButton.setOnClickListener {
-            shutdownSystem()
-        }
     }
 
     private fun showAboutDialog() {
