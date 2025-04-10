@@ -14,20 +14,20 @@ class ProfileActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile)
 
-        // Ensure scroll starts at the top
+
         val scrollView = findViewById<NestedScrollView>(R.id.scroll_view)
         scrollView.post { scrollView.scrollTo(0, 0) }
 
 
         val bottomNavigation = findViewById<com.google.android.material.bottomnavigation.BottomNavigationView>(R.id.bottom_navigation)
-        bottomNavigation.selectedItemId = R.id.nav_profile // highlight current tab
+        bottomNavigation.selectedItemId = R.id.nav_profile
         bottomNavigation.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.nav_home -> {
                     val intent = Intent(this, MainActivity::class.java)
                     intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
                     startActivity(intent)
-                    finish() // Prevents going back to previous screens
+                    finish()
                     true
                 }
                 R.id.nav_chat -> {
@@ -39,7 +39,7 @@ class ProfileActivity : AppCompatActivity() {
                     true
                 }
                 R.id.nav_profile -> {
-                    // Already on Profile, so do nothing
+
                     true
                 }
                 else -> false
@@ -51,7 +51,7 @@ class ProfileActivity : AppCompatActivity() {
 
 
     private fun setupVideos() {
-        // Unique IDs for each video
+
         val videoIds = listOf(
             R.id.video_view_1,
             R.id.video_view_2,
@@ -108,14 +108,14 @@ class ProfileActivity : AppCompatActivity() {
                 playButton.setOnClickListener {
                     if (!videoView.isPlaying) {
                         videoView.start()
-                        playButton.animate().alpha(0f).setDuration(300).start() // Hide button
+                        playButton.animate().alpha(0f).setDuration(300).start()
                     }
                 }
 
                 pauseButton.setOnClickListener {
                     if (videoView.isPlaying) {
                         videoView.pause()
-                        playButton.animate().alpha(1f).setDuration(300).start() // Show button
+                        playButton.animate().alpha(1f).setDuration(300).start()
                     }
                 }
 

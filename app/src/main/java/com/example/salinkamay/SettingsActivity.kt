@@ -21,7 +21,7 @@ class SettingsActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setDisplayShowTitleEnabled(false)
 
-        // Inside onCreate() in SettingsActivity.kt
+
         val howToUseOption = findViewById<LinearLayout>(R.id.how_to_use_option)
         howToUseOption.setOnClickListener {
             val intent = Intent(this, HowToUseActivity::class.java)
@@ -67,7 +67,7 @@ class SettingsActivity : AppCompatActivity() {
     }
 
     private fun refreshCamera() {
-        // Add logic to refresh the camera (depends on your implementation)
+
         Toast.makeText(this, "Camera Refreshed", Toast.LENGTH_SHORT).show()
     }
 
@@ -77,7 +77,7 @@ class SettingsActivity : AppCompatActivity() {
             .setMessage("Are you sure you want to shutdown?")
             .setPositiveButton("Yes") { _, _ ->
                 Toast.makeText(this, "Shutting Down...", Toast.LENGTH_SHORT).show()
-                // Add shutdown logic (e.g., closing services or sending a shutdown signal)
+
             }
             .setNegativeButton("Cancel") { dialog, _ ->
                 dialog.dismiss()

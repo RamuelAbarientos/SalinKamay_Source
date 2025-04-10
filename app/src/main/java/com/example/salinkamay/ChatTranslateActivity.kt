@@ -30,11 +30,11 @@ class ChatTranslateActivity : AppCompatActivity() {
         translatedMessageTextView = findViewById(R.id.translatedMessage)
         gestureImagesLayout = findViewById(R.id.gestureImagesLayout)
 
-        // Get the message text passed from the intent
+
         val messageText = intent.getStringExtra("message") ?: ""
         translatedMessageTextView.text = "Translating: $messageText"
 
-        // Connect to WebSocket server and send the message
+
         connectWebSocket(messageText)
     }
 
@@ -45,15 +45,15 @@ class ChatTranslateActivity : AppCompatActivity() {
             .build()
 
         val request = Request.Builder()
-            // HOTSPOT PIXEL 6a - "ws://10.19.49.75:8001/ws"
-            .url("ws://10.19.49.75:8002/ws")  // Replace with your server IP
+
+            .url("ws://10.19.49.75:8002/ws")
             .build()
 
         val listener = object : WebSocketListener() {
             override fun onOpen(webSocket: WebSocket, response: Response) {
                 super.onOpen(webSocket, response)
                 Log.d(TAG, "WebSocket connection established")
-                // Send the message to translate
+
                 webSocket.send(message)
             }
 
@@ -63,20 +63,20 @@ class ChatTranslateActivity : AppCompatActivity() {
 
                 runOnUiThread {
                     try {
-                        // Parse the JSON response
+
                         val jsonResponse = JSONObject(text)
                         val word = jsonResponse.getString("word")
                         val letters = jsonResponse.getJSONArray("letters")
 
-                        // Clear previous images
+
                         gestureImagesLayout.removeAllViews()
 
-                        // Create a TextView for each letter and an ImageView below it
+
                         for (i in 0 until letters.length()) {
                             val letterObj = letters.getJSONObject(i)
                             val letter = letterObj.getString("letter")
 
-                            // Create container for this letter
+
                             val letterContainer = LinearLayout(this@ChatTranslateActivity)
                             letterContainer.orientation = LinearLayout.VERTICAL
                             letterContainer.gravity = Gravity.CENTER
@@ -84,16 +84,16 @@ class ChatTranslateActivity : AppCompatActivity() {
                                 LinearLayout.LayoutParams.WRAP_CONTENT,
                                 LinearLayout.LayoutParams.WRAP_CONTENT
                             )
-                            layoutParams.marginEnd = 16  // Add some spacing between letters
+                            layoutParams.marginEnd = 16
                             letterContainer.layoutParams = layoutParams
 
-                            // Add letter text
+
                             val letterTextView = TextView(this@ChatTranslateActivity)
                             letterTextView.text = letter.uppercase()
                             letterTextView.textSize = 18f
                             letterContainer.addView(letterTextView)
 
-                            // Add sign language image
+
                             val imageView = ImageView(this@ChatTranslateActivity)
                             val imageParams = LinearLayout.LayoutParams(1000, 1000)
                             imageView.layoutParams = imageParams
@@ -105,7 +105,7 @@ class ChatTranslateActivity : AppCompatActivity() {
                                     imageView.setImageBitmap(bitmap)
                                 }
                             } else if (letterObj.has("error")) {
-                                // Show placeholder for error
+
                                 imageView.setImageResource(R.drawable.space)
                                 Toast.makeText(
                                     this@ChatTranslateActivity,
@@ -128,7 +128,7 @@ class ChatTranslateActivity : AppCompatActivity() {
                     }
                 }
 
-                // Close the WebSocket connection since we've received our response
+
                 webSocket.close(1000, "Received response")
             }
 
@@ -156,7 +156,7 @@ class ChatTranslateActivity : AppCompatActivity() {
 
     private fun base64ToBitmap(base64String: String): Bitmap? {
         try {
-            // Strip the "data:image/png;base64," part if present
+
             val base64Image = base64String.replace("data:image/png;base64,", "")
             Log.d(TAG, "Base64 String after removing prefix: $base64Image")
 

@@ -21,8 +21,8 @@ class TranslateActivity : AppCompatActivity() {
 
     companion object {
         private const val TAG = "TranslateActivity"
-        // HOTSPOT PIXEL 6a - "ws://10.19.49.75:8001/ws"
-        private const val WEB_SOCKET_URL = "ws://10.19.49.75:8001/ws" // Update with your IP
+
+        private const val WEB_SOCKET_URL = "ws://10.19.49.75:8001/ws"
         const val EXTRA_RECEIVED_WORD = "com.example.salinkamay.EXTRA_RECEIVED_WORD"
     }
 
@@ -30,17 +30,17 @@ class TranslateActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_translate)
 
-        // Initialize views
+
         imageView = findViewById(R.id.imageView)
         tvStatus = findViewById(R.id.tvStatus)
 
-        // Load placeholder
+
         Glide.with(this)
             .asGif()
             .load(R.drawable.ic_placeholder)
             .into(imageView)
 
-        // Set up WebSocket with longer timeout
+
         val client = OkHttpClient.Builder()
             .connectTimeout(30, TimeUnit.SECONDS)
             .readTimeout(30, TimeUnit.SECONDS)
@@ -65,12 +65,12 @@ class TranslateActivity : AppCompatActivity() {
                         Log.d(TAG, "Full received message: $text")
                         val jsonObject = JSONObject(text)
 
-                        // Handle image and letter
+
                         if (jsonObject.has("image") && jsonObject.has("letter")) {
                             val base64Image = jsonObject.getString("image")
                             val letter = jsonObject.getString("letter")
 
-                            // Decode base64 to bitmap
+
                             val bitmap = decodeBase64ToBitmap(base64Image)
 
                             runOnUiThread {
@@ -83,12 +83,12 @@ class TranslateActivity : AppCompatActivity() {
                             }
                         }
 
-                        // Handle word messages
+
                         if (jsonObject.has("word")) {
                             val receivedWord = jsonObject.getString("word")
                             Log.d(TAG, "Received word: $receivedWord")
 
-                            // Send word to ChatActivity
+
                             if (receivedWord.isNotEmpty()) {
                                 sendWordToChat(receivedWord)
                             }
@@ -118,16 +118,16 @@ class TranslateActivity : AppCompatActivity() {
             Toast.makeText(this, "Failed to connect: ${e.message}", Toast.LENGTH_LONG).show()
         }
 
-        // Set up bottom navigation bar
+
         val bottomNavigation = findViewById<com.google.android.material.bottomnavigation.BottomNavigationView>(R.id.bottom_navigation)
-        bottomNavigation.selectedItemId = R.id.nav_camera // highlight current tab
+        bottomNavigation.selectedItemId = R.id.nav_camera
         bottomNavigation.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.nav_home -> {
                     val intent = Intent(this, MainActivity::class.java)
                     intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
                     startActivity(intent)
-                    finish() // Prevents going back to previous screens
+                    finish()
                     true
                 }
                 R.id.nav_chat -> {
@@ -164,20 +164,20 @@ class TranslateActivity : AppCompatActivity() {
         }
     }
 
-    // Send word to ChatActivity
+
     private fun sendWordToChat(word: String) {
-        // Method 1: Send word to ChatActivity if it's already running
+
         val intent = Intent("com.example.salinkamay.RECEIVED_WORD_ACTION")
         intent.putExtra(EXTRA_RECEIVED_WORD, word)
         sendBroadcast(intent)
 
-        // Method 2: Open ChatActivity with the word
+
         val chatIntent = Intent(this, ChatActivity::class.java)
         chatIntent.putExtra(EXTRA_RECEIVED_WORD, word)
-        chatIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP) // Ensure we don't create multiple instances
+        chatIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
         startActivity(chatIntent)
 
-        // Show a toast notification
+
         Toast.makeText(this, "New message: $word", Toast.LENGTH_SHORT).show()
     }
 }

@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity() {
                     val intent = Intent(this, MainActivity::class.java)
                     intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
                     startActivity(intent)
-                    finish() // Prevents going back to previous screens
+                    finish()
                     true
                 }
                 R.id.nav_chat -> {
@@ -46,7 +46,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        // Button Click Listeners
+
         btnTranslate.setOnClickListener {
             val intent = Intent(this, TranslateActivity::class.java)
             startActivity(intent)

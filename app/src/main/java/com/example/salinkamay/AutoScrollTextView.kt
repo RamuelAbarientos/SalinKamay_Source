@@ -16,10 +16,10 @@ class AutoScrollTextView @JvmOverloads constructor(
 ) : AppCompatTextView(context, attrs, defStyleAttr) {
 
     private var scroller: Scroller = Scroller(context, LinearInterpolator())
-    private var scrollSpeedSmall = 100  // Pixels per second for small text
-    private var scrollSpeedLarge = 500  // Pixels per second for large text
-    private var pauseDuration: Long = 1000  // Pause between scroll cycles
-    private var initialDelay: Long = 1000  // Delay before starting scroll
+    private var scrollSpeedSmall = 100
+    private var scrollSpeedLarge = 500
+    private var pauseDuration: Long = 1000
+    private var initialDelay: Long = 1000
     private var isAutoScrollEnabled = true
     private var isCurrentlyScrolling = false
     private var isLargeText = false
@@ -66,7 +66,7 @@ class AutoScrollTextView @JvmOverloads constructor(
     override fun onTextChanged(text: CharSequence?, start: Int, lengthBefore: Int, lengthAfter: Int) {
         super.onTextChanged(text, start, lengthBefore, lengthAfter)
         if (isAutoScrollEnabled) {
-            restartScrolling() // Restart scrolling when text changes
+            restartScrolling()
         }
     }
 
@@ -87,7 +87,7 @@ class AutoScrollTextView @JvmOverloads constructor(
             val scrollSpeed = if (isLargeText) scrollSpeedLarge else scrollSpeedSmall
             val duration = (scrollDistance / scrollSpeed.toFloat() * 1000).toInt()
 
-            scroller.forceFinished(true) // Ensure scroller stops before restarting
+            scroller.forceFinished(true)
             scroller.startScroll(0, 0, scrollDistance, 0, duration)
 
             invalidate()
@@ -110,7 +110,7 @@ class AutoScrollTextView @JvmOverloads constructor(
 
     fun restartScrolling() {
         if (isAutoScrollEnabled) {
-            scroller.forceFinished(true) // Ensure previous scroll is stopped
+            scroller.forceFinished(true)
             scrollTo(0, 0)
             postDelayed({ startScrollingIfNeeded() }, initialDelay)
         }
@@ -120,10 +120,10 @@ class AutoScrollTextView @JvmOverloads constructor(
     override fun computeScroll() {
         if (scroller.computeScrollOffset()) {
             scrollTo(scroller.currX, scroller.currY)
-            postInvalidateOnAnimation() // Force redraw for smooth scrolling
+            postInvalidateOnAnimation()
         } else if (isCurrentlyScrolling && isAutoScrollEnabled) {
             postDelayed({
-                scroller.startScroll(scrollX, 0, -scrollX, 0, 500) // Smooth reset
+                scroller.startScroll(scrollX, 0, -scrollX, 0, 500)
                 postDelayed({ startScrollingIfNeeded() }, pauseDuration)
             }, pauseDuration)
         }

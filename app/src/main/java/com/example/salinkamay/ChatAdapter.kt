@@ -20,7 +20,7 @@ import android.animation.ObjectAnimator
 class ChatAdapter(private val context: Context) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    // Define view types
+
     companion object {
         private const val VIEW_TYPE_USER_MESSAGE = 0
         private const val VIEW_TYPE_SERVER_MESSAGE = 1
@@ -30,14 +30,14 @@ class ChatAdapter(private val context: Context) :
     private var enlargedPosition: Int = RecyclerView.NO_POSITION
     private val prefs = context.getSharedPreferences("ChatPrefs", Context.MODE_PRIVATE)
 
-    // Initialize Text-to-Speech engine
+
     private var textToSpeech: TextToSpeech? = null
     private var isTtsReady = false
 
     init {
         loadMessages()
 
-        // Initialize Text-to-Speech
+
         textToSpeech = TextToSpeech(context) { status ->
             if (status == TextToSpeech.SUCCESS) {
                 val result = textToSpeech?.setLanguage(Locale.getDefault())
@@ -53,13 +53,13 @@ class ChatAdapter(private val context: Context) :
         }
     }
 
-    // ViewHolder for user messages
+
     class UserMessageViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val messageText: AutoScrollTextView = itemView.findViewById(R.id.messageText)
         val messageTimestamp: TextView = itemView.findViewById(R.id.messageTimestamp)
     }
 
-    // ViewHolder for server messages
+
     class ServerMessageViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val messageText: AutoScrollTextView = itemView.findViewById(R.id.messageText)
         val messageTimestamp: TextView = itemView.findViewById(R.id.messageTimestamp)
@@ -106,10 +106,10 @@ class ChatAdapter(private val context: Context) :
         holder.messageText.text = message.text
         holder.messageTimestamp.text = message.getFormattedTime()
 
-        // Enable auto-scrolling
+
         holder.messageText.setAutoScrollEnabled(true)
 
-        // Adjust text size based on enlargement
+
         if (position == enlargedPosition) {
             holder.messageText.textSize = 125f
             holder.messageText.setLargeTextMode(true)
@@ -118,12 +118,12 @@ class ChatAdapter(private val context: Context) :
             holder.messageText.setLargeTextMode(false)
         }
 
-        // Restart scrolling
+
         holder.messageText.post {
             holder.messageText.restartScrolling()
         }
 
-        // Click to enlarge and reset others
+
         holder.messageText.setOnClickListener {
             val previousPosition = enlargedPosition
             enlargedPosition = if (position == enlargedPosition) RecyclerView.NO_POSITION else position
@@ -134,12 +134,12 @@ class ChatAdapter(private val context: Context) :
             notifyItemChanged(position)
         }
 
-        // Delay restart scrolling for smooth effect
+
         holder.messageText.postDelayed({
             holder.messageText.restartScrolling()
         }, 100)
 
-        // Long press for message options
+
         holder.itemView.setOnLongClickListener {
             showOptionsDialog(position)
             true
@@ -150,10 +150,10 @@ class ChatAdapter(private val context: Context) :
         holder.messageText.text = message.text
         holder.messageTimestamp.text = message.getFormattedTime()
 
-        // Enable auto-scrolling
+
         holder.messageText.setAutoScrollEnabled(true)
 
-        // Adjust text size based on enlargement
+
         if (position == enlargedPosition) {
             holder.messageText.textSize = 125f
             holder.messageText.setLargeTextMode(true)
@@ -162,12 +162,12 @@ class ChatAdapter(private val context: Context) :
             holder.messageText.setLargeTextMode(false)
         }
 
-        // Restart scrolling
+
         holder.messageText.post {
             holder.messageText.restartScrolling()
         }
 
-        // Click to enlarge and reset others
+
         holder.messageText.setOnClickListener {
             val previousPosition = enlargedPosition
             enlargedPosition = if (position == enlargedPosition) RecyclerView.NO_POSITION else position
@@ -178,12 +178,12 @@ class ChatAdapter(private val context: Context) :
             notifyItemChanged(position)
         }
 
-        // Delay restart scrolling for smooth effect
+
         holder.messageText.postDelayed({
             holder.messageText.restartScrolling()
         }, 100)
 
-        // Long press for message options
+
         holder.itemView.setOnLongClickListener {
             showOptionsDialog(position)
             true
@@ -207,7 +207,7 @@ class ChatAdapter(private val context: Context) :
                 when (which) {
                     0 -> readMessageAloud(position)
                     1 -> showDeleteConfirmationDialog(position)
-                    2 -> translateMessage(position) // New Translate Message option
+                    2 -> translateMessage(position)
                 }
             }
             .show()
@@ -236,18 +236,17 @@ class ChatAdapter(private val context: Context) :
             .show()
     }
 
-    // Function to handle Translate Message option
+
     private fun translateMessage(position: Int) {
         if (position >= 0 && position < messages.size) {
             val messageText = messages[position].text
 
-            // Start the TranslateActivity or process the translation here
-            // For now, just show a simple Toast
+
             Toast.makeText(context, "Translating: $messageText", Toast.LENGTH_SHORT).show()
 
-            // Start the ChatTranslateActivity to show the translation
+
             val intent = Intent(context, ChatTranslateActivity::class.java)
-            intent.putExtra("message", messageText) // Pass the message text to the next activity
+            intent.putExtra("message", messageText)
             context.startActivity(intent)
         }
     }

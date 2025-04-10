@@ -69,9 +69,9 @@ class WebSocketManager(private val serverUrl: String) {
     }
 
     private fun attemptReconnect() {
-        // Simple reconnection logic
+
         disconnect()
-        Thread.sleep(3000) // Wait 3 seconds before reconnecting
+        Thread.sleep(3000)
         connect()
     }
 

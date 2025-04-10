@@ -7,7 +7,7 @@ import java.util.Locale
 class ChatMessage(
     val text: String,
     val timestamp: Long = System.currentTimeMillis(),
-    val isFromServer: Boolean = false // New flag to identify server messages
+    val isFromServer: Boolean = false
 ) {
     fun getFormattedTime(): String {
         val sdf = SimpleDateFormat("HH:mm", Locale.getDefault())
