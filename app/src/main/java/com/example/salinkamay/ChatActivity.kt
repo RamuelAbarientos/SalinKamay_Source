@@ -2,6 +2,7 @@ package com.example.salinkamay
 
 import android.Manifest
 import android.content.Intent
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.speech.RecognizerIntent
 import android.widget.Button
@@ -22,14 +23,16 @@ class ChatActivity : AppCompatActivity(), WebSocketManager.OnMessageListener {
     private lateinit var chatRecyclerView: RecyclerView
     private lateinit var voiceButton: ImageButton
 
-
+    // WebSocket manager for connecting to the server
     private lateinit var webSocketManager: WebSocketManager
 
 
+    // HOTSPOT PIXEL 6a - "ws://10.19.49.75:8001/ws"
+    // WiFi sa bahay PC - "ws://10.19.49.80:8001/ws"
 
     private val serverUrl = "ws://10.19.49.75:8001/ws"
 
-
+    // Register for speech recognition result
     private val speechRecognizer = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
         if (result.resultCode == RESULT_OK && result.data != null) {
             val spokenText = result.data?.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS)?.get(0) ?: ""
@@ -37,7 +40,7 @@ class ChatActivity : AppCompatActivity(), WebSocketManager.OnMessageListener {
         }
     }
 
-
+    // Register for permission request
     private val requestPermissionLauncher = registerForActivityResult(
         ActivityResultContracts.RequestPermission()
     ) { isGranted: Boolean ->
@@ -53,18 +56,18 @@ class ChatActivity : AppCompatActivity(), WebSocketManager.OnMessageListener {
         setContentView(R.layout.activity_chat)
 
         val bottomNavigation = findViewById<com.google.android.material.bottomnavigation.BottomNavigationView>(R.id.bottom_navigation)
-        bottomNavigation.selectedItemId = R.id.nav_chat
+        bottomNavigation.selectedItemId = R.id.nav_chat // highlight current tab
         bottomNavigation.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.nav_home -> {
                     val intent = Intent(this, MainActivity::class.java)
                     intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
                     startActivity(intent)
-                    finish()
+                    finish() // Prevents going back to previous screens
                     true
                 }
                 R.id.nav_chat -> {
-
+                    // Already on ChatActivity
                     true
                 }
                 R.id.nav_camera -> {
@@ -79,31 +82,31 @@ class ChatActivity : AppCompatActivity(), WebSocketManager.OnMessageListener {
             }
         }
 
-
+        // Initialize views
         messageEditText = findViewById(R.id.messageEditText)
         val sendButton: Button = findViewById(R.id.sendButton)
-        voiceButton = findViewById(R.id.voiceButton)
+        voiceButton = findViewById(R.id.voiceButton) // New voice button
         chatRecyclerView = findViewById(R.id.chatRecyclerView)
         val backButton: ImageView = findViewById(R.id.backButton)
-        val cameraButton: ImageView = findViewById(R.id.userProfilePic)
+        val cameraButton: ImageView = findViewById(R.id.userProfilePic) // Camera button
 
-
+        // Handle Back Button Click
         backButton.setOnClickListener {
-            finish()
+            finish() // Closes the activity and returns to the previous screen
         }
 
-
+        // Handle Camera Button Click (Navigate to TranslateActivity)
         cameraButton.setOnClickListener {
             val intent = Intent(this, TranslateActivity::class.java)
             startActivity(intent)
         }
 
-
+        // Setup voice button click listener
         voiceButton.setOnClickListener {
             requestPermissionLauncher.launch(Manifest.permission.RECORD_AUDIO)
         }
 
-
+        // Setup RecyclerView with Adapter
         chatAdapter = ChatAdapter(this)
         chatRecyclerView.apply {
             layoutManager = LinearLayoutManager(this@ChatActivity).apply {
@@ -112,20 +115,20 @@ class ChatActivity : AppCompatActivity(), WebSocketManager.OnMessageListener {
             adapter = chatAdapter
         }
 
-
+        // Load saved messages
         chatAdapter.loadMessages()
 
-
+        // Setup send button click listener
         sendButton.setOnClickListener {
             val messageText = messageEditText.text.toString().trim()
             if (messageText.isNotEmpty()) {
-
+                // Add message as user message (not from server)
                 addUserMessage(messageText)
                 messageEditText.text?.clear()
             }
         }
 
-
+        // Initialize WebSocket connection
         initializeWebSocket()
     }
 
@@ -135,12 +138,20 @@ class ChatActivity : AppCompatActivity(), WebSocketManager.OnMessageListener {
         webSocketManager.connect()
     }
 
-
+    // WebSocket OnMessageListener interface implementations
     override fun onMessageReceived(word: String) {
+        // Add the word received from the server to the chat
 
-        if (word.length > 1 && word != "Not okay" && word != "Okay"  && word != "Letter"  && word != "Number") {
+        if (word.length > 1 && word != "Not okay" && word != "Okay"  && word != "Letter"  && word != "Number" && word != "Deleted") {
             runOnUiThread {
                 addServerMessage(word)
+                val mediaPlayer = MediaPlayer.create(applicationContext, R.raw.ring)
+                mediaPlayer.start()
+
+                mediaPlayer.setOnCompletionListener {
+                    it.release()
+                }
+
             }
         }
     }
@@ -171,14 +182,14 @@ class ChatActivity : AppCompatActivity(), WebSocketManager.OnMessageListener {
         }
     }
 
-
+    // Method to add user messages
     private fun addUserMessage(text: String) {
         val message = ChatMessage(text, isFromServer = false)
         chatAdapter.addMessage(message)
         chatRecyclerView.smoothScrollToPosition(chatAdapter.itemCount - 1)
     }
 
-
+    // Method to add server messages
     private fun addServerMessage(text: String) {
         val message = ChatMessage(text, isFromServer = true)
         chatAdapter.addMessage(message)
@@ -187,7 +198,7 @@ class ChatActivity : AppCompatActivity(), WebSocketManager.OnMessageListener {
 
     override fun onDestroy() {
         super.onDestroy()
-
+        // Clean up resources when activity is destroyed
         webSocketManager.disconnect()
         chatAdapter.shutdown()
     }
